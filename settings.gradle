@@ -1,1 +1,4 @@
 rootProject.name = 'Part3'
+include 'main'
+include 'test'
+
