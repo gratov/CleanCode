@@ -28,12 +28,11 @@ public class Customer {
         return card;
     }
 
-    public void AddCard(LoyaltyCard card){
+    public void addCard(LoyaltyCard card){
         if(this.card == null){
             this.card =card;
         }
     }
-
     public Grocery getMostBought() {
         Grocery mostBought = null;
         int maxAmountBought = 0;
