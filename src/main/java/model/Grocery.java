@@ -1,13 +1,26 @@
 package model;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 /**
  * Created by paulienl on 23/02/2017.
  */
 public class Grocery {
     private String name;
+    private LocalDate dateBought;
 
     public Grocery(String name) {
         this.name = name;
+        this.dateBought = LocalDate.now();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public DayOfWeek dayBought() {
+        return dateBought.getDayOfWeek();
     }
 
     @Override

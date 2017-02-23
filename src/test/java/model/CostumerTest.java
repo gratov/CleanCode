@@ -73,4 +73,37 @@ public class CostumerTest {
 
         Assertions.assertThat(testCustomer.boughtOnce()).isEmpty();
     }
+
+    @Test
+    public void getMostBought_oneProductBoughtTwiceAndOnceProductBoughtOnce_ShouldOnlyReturnTheProductBoughtTwice(){
+        Grocery grocery1 = new Grocery("test1");
+        Grocery grocery2 = new Grocery("test2");
+
+        testCustomer.addGrocery(grocery1);
+        testCustomer.addGrocery(grocery1);
+        testCustomer.addGrocery(grocery2);
+
+        Assertions.assertThat(testCustomer.getMostBought()).isEqualTo(grocery1);
+    }
+    @Test
+    public void getMostBought_twoProductsBoughtAnEqualAmountOfTimes_ShouldReturnBothItems(){
+        Grocery grocery1 = new Grocery("test1");
+        Grocery grocery2 = new Grocery("test2");
+
+        testCustomer.addGrocery(grocery1);
+        testCustomer.addGrocery(grocery2);
+
+        Assertions.assertThat(testCustomer.getMostBought()).contains(grocery1,grocery2);
+    }
+//    @Test
+//    public void getMostBought_oneProductBoughtTwiceAndOnceProductBoughtOnce_ShouldOnlyReturnTheProductBoughtTwice(){
+//        Grocery grocery1 = new Grocery("test1");
+//        Grocery grocery2 = new Grocery("test2");
+//
+//        testCustomer.addGrocery(grocery1);
+//        testCustomer.addGrocery(grocery1);
+//        testCustomer.addGrocery(grocery2);
+//
+//        Assertions.assertThat(testCustomer.getMostBought()).isEqualTo(grocery1);
+//    }
 }
