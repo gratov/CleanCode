@@ -11,8 +11,9 @@ import static org.junit.Assert.*;
 public class LoyaltyCardTest {
     @Test
     public void getBarcode_ReturnsBarcode() throws Exception {
-        LoyaltyCard card = new LoyaltyCard("123456789");
-        Assert.assertEquals("123456789",card.getBarcode());
+        String barCode = "123456789";
+        LoyaltyCard card = new LoyaltyCard(barCode);
+        Assert.assertEquals(barCode,card.getBarcode());
 
     }
 

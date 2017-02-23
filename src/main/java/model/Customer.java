@@ -12,39 +12,49 @@ public class Customer {
     private UUID id;
     private String name;
     private LoyaltyCard card;
-    private HashMap<Groceries, Integer> groceriesBought;
+    private HashMap<Grocery, Integer> groceriesBought = new HashMap<>();
 
-    public Customer(){
+    public Customer() {
         id = UUID.randomUUID();
     }
-    public Customer(String name){
+
+    public Customer(String name) {
         id = UUID.randomUUID();
         this.name = name;
     }
-    public LoyaltyCard getCard(){
+
+    public LoyaltyCard getCard() {
         return card;
     }
 
-    public Groceries getMostBought(){
-        Groceries mostBought=null;
-        int amountBought=0;
-        for (Groceries grocery : groceriesBought.keySet()){
-            if(groceriesBought.get(grocery) > amountBought){
-                amountBought = groceriesBought.get(grocery);
-                mostBought=grocery;
+    public Grocery getMostBought() {
+        Grocery mostBought = null;
+        int maxAmountBought = 0;
+        for (Grocery grocery : groceriesBought.keySet()) {
+            if (groceriesBought.get(grocery) > maxAmountBought) {
+                maxAmountBought = groceriesBought.get(grocery);
+                mostBought = grocery;
             }
         }
         return mostBought;
     }
 
-    public List<Groceries>  boughtOnce(){
-        List<Groceries> boughtOnce = new ArrayList<>();
-        for (Groceries grocery : groceriesBought.keySet()){
-            if(groceriesBought.get(grocery) == 1){
+    public List<Grocery> boughtOnce() {
+        List<Grocery> boughtOnce = new ArrayList<>();
+        for (Grocery grocery : groceriesBought.keySet()) {
+            if (groceriesBought.get(grocery) == 1) {
                 boughtOnce.add(grocery);
             }
         }
         return boughtOnce;
+    }
+
+    public void addGrocery(Grocery grocery) {
+        if (groceriesBought.containsKey(grocery)) {
+            groceriesBought.put(grocery, groceriesBought.get(grocery) + 1);
+        } else {
+            groceriesBought.put(grocery,1);
+        }
     }
 
 }
