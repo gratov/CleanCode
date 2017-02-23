@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,12 @@ public class Customer {
 
     public LoyaltyCard getCard() {
         return card;
+    }
+
+    public void AddCard(LoyaltyCard card){
+        if(this.card == null){
+            this.card =card;
+        }
     }
 
     public Grocery getMostBought() {
